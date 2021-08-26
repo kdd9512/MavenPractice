@@ -1,12 +1,11 @@
 package main;
 
 import beans.HelloWorld;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        // beans.xml 로딩하기.
+        // beans.xml 로딩하기. 실제 파일의 위치는 src/main/resources/beans.xml.
         // ** 경로를 입력할 때, 실제 파일의 경로는 그냥 beans.xml 이다.
         // 얼핏 src/main/resources/beans.xml 로 보일 수 있으나, default 경로는 이미 입력되어 있는 취급을 하므로 적을 필요가 없다.
         // 즉, 위와 같이 적으면 src/main/resources/src/main/resources/beans.xml 로 적은것과 마찬가지.
