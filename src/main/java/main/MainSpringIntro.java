@@ -1,9 +1,9 @@
 package main;
 
-import beans.HelloWorld;
+import beans.TestSpringIntro.HelloWorld;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class Main {
+public class MainSpringIntro {
     public static void main(String[] args) {
         // beans.xml 로딩하기. 실제 파일의 위치는 src/main/resources/beans.xml.
         // ** 경로를 입력할 때, 실제 파일의 경로는 그냥 beans.xml 이다.

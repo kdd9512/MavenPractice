@@ -1,4 +1,4 @@
-package beans;
+package beans.TestSpringIntro;
 
 public class HelloWorldEn implements HelloWorld{
 

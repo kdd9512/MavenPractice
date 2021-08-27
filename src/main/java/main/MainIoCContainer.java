@@ -1,14 +1,14 @@
 package main;
 
-import beans.Test;
-import beans.TestB;
+import beans.TestIoCContainer.Test;
+import beans.TestIoCContainer.TestB;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 
-public class Main2 {
+public class MainIoCContainer {
     public static void main(String[] args) {
         // BeanFactory 방식.
 //        t1();

@@ -1,4 +1,4 @@
-package beans;
+package beans.TestEmptyObj;
 
 public class TestC {
     public TestC(){
