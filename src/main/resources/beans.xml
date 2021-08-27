@@ -5,6 +5,21 @@
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--    <bean id="helloE" class="beans.HelloWorldEn"/>-->
     <!--    <bean id="helloK" class="beans.HelloWorldKr"/>-->
-    <bean id="t1" class="beans.TestB"/>
-    <bean id="t2" class="beans.Test"/>
+
+    <!--    <bean id="t1" class="beans.TestB"/>-->
+    <!--    <bean id="t2" class="beans.Test"/>-->
+
+    <!-- xml을 로딩할 때 자동으로 객체가 생성된다. -->
+    <!-- 자동주입으로 객체 속성값을 받는다면 id가 필요없어진다 -->
+    <bean class="beans.TestC" />
+
+    <!-- xml을 로딩할 때 자동으로 객체가 생성된다. -->
+    <!-- id 속성에 이름을 부여하면 getBean 메서드로 객체주소값을 받아 사용가능. -->
+    <!-- 생성된 객체는 더 이상 생성되지 않는다. 이를 싱글톤(singleton) 이라 한다. -->
+    <bean id="t3" class="beans.TestC"/>
+
+    <!-- lazy-init="true" : xml을 불러올 때, 객체가 생성되지 않는다. (생략시 기본값 false) -->
+    <!-- getBean 메서드를 호출할 때 객체가 생성되며, singleton 이기 때문에 객체는 하나만 생성된다. -->
+    <bean id="t4" class="beans.TestC" lazy-init="true"/>
+
 </beans>
