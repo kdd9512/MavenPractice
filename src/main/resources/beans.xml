@@ -34,38 +34,54 @@
         IoC 컨테이너의 close 메서드를 호출하면 객체가 소멸되며 destroy 메서드에 설정한 메서드가 자동으로 호출된다.
     -->
 
-    <bean id="t6"
-          class="beans.TestLifeCycle.TestLifeCycle"
-          lazy-init="true"
-          init-method="default_Init"
-          destroy-method="default_Destroy"
-    />
+<!--    <bean id="t6"-->
+<!--          class="beans.TestLifeCycle.TestLifeCycle"-->
+<!--          lazy-init="true"-->
+<!--          init-method="default_Init"-->
+<!--          destroy-method="default_Destroy"-->
+<!--    />-->
 
     <!-- init_method 와  destroy_method 가 설정되어 있지 않다면, default 값을 우선한다. -->
-    <bean id="t7"
-          class="beans.TestLifeCycle.TestLifeCycle2"
-          lazy-init="true"
-    />
+<!--    <bean id="t7"-->
+<!--          class="beans.TestLifeCycle.TestLifeCycle2"-->
+<!--          lazy-init="true"-->
+<!--    />-->
 
     <!--
         위(t7)와는 반대로, init_method 와  destroy_method 가 설정되어 있다면,
         default 가 아닌, "설정되어 있는 메서드"를 우선시한다.
     -->
-    <bean id="t8"
-          class="beans.TestLifeCycle.TestLifeCycle3"
-          lazy-init="true"
-          init-method="bean3_Init"
-          destroy-method="bean3_Destroy"
-    />
+<!--    <bean id="t8"-->
+<!--          class="beans.TestLifeCycle.TestLifeCycle3"-->
+<!--          lazy-init="true"-->
+<!--          init-method="bean3_Init"-->
+<!--          destroy-method="bean3_Destroy"-->
+<!--    />-->
 
     <!--
         1. 설정한 메서드가 존재하지 않는다면 무시된다.
         2. init-method / destroy-method 를 설정했으나 존재하지 않는 경우,
            오류가 발생한다.(** default 값을 이용하는 것이 아님을 유의할 것.)
     -->
-    <bean id="t9"
-          class="beans.TestLifeCycle.TestLifeCycle4"
+<!--    <bean id="t9"-->
+<!--          class="beans.TestLifeCycle.TestLifeCycle4"-->
+<!--          lazy-init="true"-->
+<!--    />-->
+
+
+    <bean id="t10"
+          class="beans.TestBeanPostProcessor.TestBpp"
           lazy-init="true"
+          init-method="bean_Init"
+          destroy-method="bean_Destroy"
+    />
+    <bean id="t11"
+          class="beans.TestBeanPostProcessor.TestBpp2"
+          lazy-init="true"
+          init-method="bean_Init2"
+          destroy-method="bean_Destroy2"
     />
 
+    <!-- BeanPostProcessor 호출 bean -->
+    <bean class="beans.TestBeanPostProcessor.processor.TestBeanPostProcessor"/>
 </beans>
