@@ -8,7 +8,7 @@ public class TestBeanPostProcessor implements BeanPostProcessor {
     // beanName 에는 beans.xml 에서 정의한 bean 의 id 값이 들어온다.
 
 
-    // init 메서드 호출 전에
+    // init 메서드 호출 전에 이하를 작업.
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
@@ -28,7 +28,7 @@ public class TestBeanPostProcessor implements BeanPostProcessor {
         return bean;
     }
 
-    // init 메서드 호출 후에.
+    // init 메서드 호출 후에 이하를 작업.
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("after");
