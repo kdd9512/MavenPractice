@@ -10,22 +10,30 @@
     <!-- <bean id="t1" class="beans.TestIoCContainer.TestB"/>-->
     <!-- <bean id="t2" class="beans.TestIoCContainer.Test"/>-->
 
-    <!-- xml을 로딩할 때 자동으로 객체가 생성된다. -->
-    <!-- 자동주입으로 객체 속성값을 받는다면 id가 필요없어진다 -->
-    <!-- <bean class="beans.TestEmptyObj.TestC" />-->
+    <!--
+        xml을 로딩할 때 자동으로 객체가 생성된다.
+        자동주입으로 객체 속성값을 받는다면 id가 필요없어진다
+    -->
+    <!--<bean class="beans.TestEmptyObj.TestC" />-->
 
-    <!-- xml을 로딩할 때 자동으로 객체가 생성된다. &ndash;&gt;-->
-    <!-- id 속성에 이름을 부여하면 getBean 메서드로 객체주소값을 받아 사용가능. -->
-    <!-- 생성된 객체는 더 이상 생성되지 않는다. 이를 싱글톤(singleton) 이라 한다. -->
-    <!-- <bean id="t3" class="beans.TestEmptyObj.TestC"/>-->
+    <!--
+        xml을 로딩할 때 자동으로 객체가 생성된다.
+        id 속성에 이름을 부여하면 getBean 메서드로 객체주소값을 받아 사용가능.
+        생성된 객체는 더 이상 생성되지 않는다. 이를 싱글톤(singleton) 이라 한다.
+     -->
+    <!-- <bean id="t3" class="beans.TestEmptyObj.TestC"/> -->
 
-    <!-- lazy-init="true" : xml을 불러올 때, 객체가 생성되지 않는다. (생략시 기본값 false) -->
-    <!-- "getBean 메서드를 호출할 때 객체가 생성"되며, singleton 이기 때문에 객체는 하나만 생성된다. -->
+    <!--
+        lazy-init="true" : xml을 불러올 때, 객체가 생성되지 않는다. (생략시 기본값 false)
+        "getBean 메서드를 호출할 때 객체가 생성"되며, singleton 이기 때문에 객체는 하나만 생성된다.
+    -->
     <!-- <bean id="t4" class="beans.TestEmptyObj.TestC" lazy-init="true"/>-->
 
-    <!-- scope 종류-->
-    <!-- 1. prototype : xml을 로딩할 때 객체가 생성되지 않으며, getBean 메서드를 "호출할 때 마다" 새 객체를 생성해서 반환.-->
-    <!-- 2. singleton :-->
+    <!-- scope 종류
+        1. prototype : xml을 로딩할 때 객체가 생성되지 않으며, getBean 메서드를 "호출할 때 마다" 새 객체를 생성해서 반환.
+        2. singleton : xml을 로딩할 때 객체가 생성되며, getBean 메서드를 호출하면 생성되었던 객체를 반환한다.
+                       즉, prototype 과는 다르게 xml을 로딩할 때 객체를 한 번만 생성하여 호출되면 그 객체를 반환함.
+     -->
     <!-- <bean id="t5" class="beans.TestEmptyObj.TestC" scope="prototype"/>-->
 
 
@@ -69,19 +77,80 @@
 <!--    />-->
 
 
-    <bean id="t10"
-          class="beans.TestBeanPostProcessor.TestBpp"
-          lazy-init="true"
-          init-method="bean_Init"
-          destroy-method="bean_Destroy"
-    />
-    <bean id="t11"
-          class="beans.TestBeanPostProcessor.TestBpp2"
-          lazy-init="true"
-          init-method="bean_Init2"
-          destroy-method="bean_Destroy2"
-    />
+<!--    <bean id="t10"-->
+<!--          class="beans.TestBeanPostProcessor.TestBpp"-->
+<!--          lazy-init="true"-->
+<!--          init-method="bean_Init"-->
+<!--          destroy-method="bean_Destroy"-->
+<!--    />-->
+<!--    <bean id="t11"-->
+<!--          class="beans.TestBeanPostProcessor.TestBpp2"-->
+<!--          lazy-init="true"-->
+<!--          init-method="bean_Init2"-->
+<!--          destroy-method="bean_Destroy2"-->
+<!--    />-->
 
     <!-- BeanPostProcessor 호출 bean -->
-    <bean class="beans.TestBeanPostProcessor.processor.TestBeanPostProcessor"/>
+<!--    <bean class="beans.TestBeanPostProcessor.processor.TestBeanPostProcessor"/>-->
+
+
+<!-- Constructor Data Injection -->
+    <bean id="obj1" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true"/>
+    <bean id="obj2" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="125"/>
+    </bean>
+    <bean id="obj3" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="19.72"/>
+    </bean>
+    <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="김두한"/>
+    </bean>
+    <!-- 복수의 데이터를 주입할 경우, 아래와 같이 constructor-arg 를 복수 사용한다.-->
+    <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="1972" type="int"/>
+        <constructor-arg value="11.21" type="double"/>
+        <constructor-arg value="심영" type="java.lang.String"/>
+    </bean>
+
+    <!--
+     injection 은 하드코딩과는 다르게 데이터 주입 순서가 일치하지 않더라도 정상 작동한다.
+     이는 순서대로 주입할 수 없는 경우, 데이터를 모두 주입할 수 있는 생성자를 찾는 injection 의 특성때문이다.
+     단, 결과값이 이상해진다거나 하는 등의 문제가 발생할 수 있기 때문에 순서에 맞춰서 주입하는 것이 좋다.
+     -->
+    <bean id="obj6" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="1972" type="int"/>
+        <constructor-arg value="상하이조" type="java.lang.String"/>
+        <constructor-arg value="11.21" type="double"/>
+    </bean>
+
+    <!--
+        index 를 정의하여 데이터를 주입할 순서를 지정할 수 있다. 이는 같은 타입의 데이터의 순서를 구분할 때 사용한다.
+        물론 순서는 0부터 시작.
+    -->
+    <bean id="obj7" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
+        <constructor-arg value="의사양반" type="java.lang.String" index="2"/>
+        <constructor-arg value="11.21" type="double" index="1"/>
+        <constructor-arg value="1972" type="int" index="0"/>
+    </bean>
+    <!-- bean 에서 객체를 주입. -->
+    <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">
+        <constructor-arg>
+            <bean class="beans.TestConstructorDI.DataBean"/>
+        </constructor-arg>
+        <constructor-arg>
+            <bean class="beans.TestConstructorDI.DataBean"/>
+        </constructor-arg>
+    </bean>
+
+    <!--
+        이미 정의되어 있는 객체를 주입.
+        매번 새로운 객체를 주입하기 위해 scope 는 prototype 으로.
+    -->
+
+    <bean id="dataBean" class="beans.TestConstructorDI.DataBean" scope="prototype"/>
+    <bean id="obj9" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">
+        <constructor-arg ref="dataBean"/>
+        <constructor-arg ref="dataBean"/>
+    </bean>
+
 </beans>
