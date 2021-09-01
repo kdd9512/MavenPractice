@@ -95,64 +95,76 @@
 
 
 <!-- Constructor Data Injection -->
-    <bean id="obj1" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true"/>
-    <bean id="obj2" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="125"/>
-    </bean>
-    <bean id="obj3" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="19.72"/>
-    </bean>
-    <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="김두한"/>
-    </bean>
+<!--    <bean id="obj1" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true"/>-->
+<!--    <bean id="obj2" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="125"/>-->
+<!--    </bean>-->
+<!--    <bean id="obj3" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="19.72"/>-->
+<!--    </bean>-->
+<!--    <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="김두한"/>-->
+<!--    </bean>-->
 
     <!-- 복수의 데이터를 주입할 경우, 아래와 같이 constructor-arg 를 복수 사용한다.-->
-    <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="1972" type="int"/>
-        <constructor-arg value="11.21" type="double"/>
-        <constructor-arg value="심영" type="java.lang.String"/>
-    </bean>
+<!--    <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="1972" type="int"/>-->
+<!--        <constructor-arg value="11.21" type="double"/>-->
+<!--        <constructor-arg value="심영" type="java.lang.String"/>-->
+<!--    </bean>-->
 
     <!--
      injection 은 하드코딩과는 다르게 데이터 주입 순서가 일치하지 않더라도 정상 작동한다.
      이는 순서대로 주입할 수 없는 경우, 데이터를 모두 주입할 수 있는 생성자를 찾는 injection 의 특성때문이다.
      단, 결과값이 이상해진다거나 하는 등의 문제가 발생할 수 있기 때문에 순서에 맞춰서 주입하는 것이 좋다.
      -->
-    <bean id="obj6" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="1972" type="int"/>
-        <constructor-arg value="상하이조" type="java.lang.String"/>
-        <constructor-arg value="11.21" type="double"/>
-    </bean>
+<!--    <bean id="obj6" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="1972" type="int"/>-->
+<!--        <constructor-arg value="상하이조" type="java.lang.String"/>-->
+<!--        <constructor-arg value="11.21" type="double"/>-->
+<!--    </bean>-->
 
     <!--
         index 를 정의하여 데이터를 주입할 순서를 지정할 수 있다. 이는 같은 타입의 데이터의 순서를 구분할 때 사용한다.
         물론 순서는 0부터 시작.
     -->
-    <bean id="obj7" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
-        <constructor-arg value="의사양반" type="java.lang.String" index="2"/>
-        <constructor-arg value="11.21" type="double" index="1"/>
-        <constructor-arg value="1972" type="int" index="0"/>
-    </bean>
+<!--    <bean id="obj7" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+<!--        <constructor-arg value="의사양반" type="java.lang.String" index="2"/>-->
+<!--        <constructor-arg value="11.21" type="double" index="1"/>-->
+<!--        <constructor-arg value="1972" type="int" index="0"/>-->
+<!--    </bean>-->
 
     <!-- bean 에서 객체를 주입. -->
-    <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">
-        <constructor-arg>
-            <bean class="beans.TestConstructorDI.DataBean"/>
-        </constructor-arg>
-        <constructor-arg>
-            <bean class="beans.TestConstructorDI.DataBean"/>
-        </constructor-arg>
-    </bean>
+<!--    <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
+<!--        <constructor-arg>-->
+<!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
+<!--        </constructor-arg>-->
+<!--        <constructor-arg>-->
+<!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
 
     <!--
         이미 정의되어 있는 객체를 주입.
         매번 새로운 객체를 주입하기 위해 scope 는 prototype 으로.
     -->
 
-    <bean id="dataBean" class="beans.TestConstructorDI.DataBean" scope="prototype"/>
-    <bean id="obj9" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">
-        <constructor-arg ref="dataBean"/>
-        <constructor-arg ref="dataBean"/>
+<!--    <bean id="dataBean" class="beans.TestConstructorDI.DataBean" scope="prototype"/>-->
+<!--    <bean id="obj9" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
+<!--        <constructor-arg ref="dataBean"/>-->
+<!--        <constructor-arg ref="dataBean"/>-->
+<!--    </bean>-->
+
+    <bean id="t12" class="beans.TestSetterDI.TestSetterDI" lazy-init="true">
+        <property name="data1" value="1972"/>
+        <property name="data2" value="11.21"/>
+        <property name="data3" value="true"/>
+        <property name="data4" value="김두한"/>
+        <property name="data5">
+            <bean class="beans.TestSetterDI.DataBean"/>
+        </property>
+        <property name="data6" ref="dataBean"/>
     </bean>
+    <bean id="dataBean" class="beans.TestSetterDI.DataBean"/>
 
 </beans>
