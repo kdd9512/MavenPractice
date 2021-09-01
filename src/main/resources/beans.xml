@@ -105,6 +105,7 @@
     <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
         <constructor-arg value="김두한"/>
     </bean>
+
     <!-- 복수의 데이터를 주입할 경우, 아래와 같이 constructor-arg 를 복수 사용한다.-->
     <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">
         <constructor-arg value="1972" type="int"/>
@@ -132,6 +133,7 @@
         <constructor-arg value="11.21" type="double" index="1"/>
         <constructor-arg value="1972" type="int" index="0"/>
     </bean>
+
     <!-- bean 에서 객체를 주입. -->
     <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">
         <constructor-arg>
