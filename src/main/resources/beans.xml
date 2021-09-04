@@ -275,53 +275,53 @@
 
     <!-- AUTOWIRE 자동주입. -->
 
-    <bean id="obj10" class="beans.TestAutoWired.TestAutoWired">
+   <!-- <bean id="obj10" class="beans.TestAutoWired.TestAutoWired">
         <property name="data1" ref="data_bean1"/>
         <property name="data2" ref="data_bean1"/>
-    </bean>
+    </bean>-->
 
-    <bean id="data_bean1" class="beans.TestAutoWired.AutoWiredDataBean" scope="prototype"/>
+    <!--<bean id="data_bean1" class="beans.TestAutoWired.AutoWiredDataBean" scope="prototype"/>-->
 
     <!-- AutoWire byName -->
-    <bean id="obj11" class="beans.TestAutoWired.TestAutoWired" autowire="byName"/>
+<!--    <bean id="obj11" class="beans.TestAutoWired.TestAutoWired" autowire="byName"/>-->
 
-    <bean id="data1" class="beans.TestAutoWired.AutoWiredDataBean"/>
-    <bean id="data2" class="beans.TestAutoWired.AutoWiredDataBean"/>
+<!--    <bean id="data1" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
+<!--    <bean id="data2" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
 
     <!-- AutoWire byType -->
-    <bean id="obj12" class="beans.TestAutoWired.TestAutoWired2" autowire="byType"/>
+<!--    <bean id="obj12" class="beans.TestAutoWired.TestAutoWired2" autowire="byType"/>-->
 
     <!--
         ** 동일한 타입의 bean 이 2개 이상 정의되어 있으면 안된다.
     -->
-    <bean id="data_bean2" class="beans.TestAutoWired.AutoWiredDataBean2"/>
+<!--    <bean id="data_bean2" class="beans.TestAutoWired.AutoWiredDataBean2"/>-->
 
 
     <!-- AutoWire constructor -->
-    <bean id="obj13" class="beans.TestAutoWired.TestAutoWired3">
-        <constructor-arg index="0" ref="data_bean2"/>
-        <constructor-arg index="1" ref="data_bean2"/>
-    </bean>
+<!--    <bean id="obj13" class="beans.TestAutoWired.TestAutoWired3">-->
+<!--        <constructor-arg index="0" ref="data_bean2"/>-->
+<!--        <constructor-arg index="1" ref="data_bean2"/>-->
+<!--    </bean>-->
 
-    <bean id="obj14" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor"/>
+<!--    <bean id="obj14" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor"/>-->
 
-    <bean id="obj15" class="beans.TestAutoWired.TestAutoWired3">
-        <constructor-arg index="0" value="1972" type="int"/>
-        <constructor-arg index="1" value="조병옥" />
-        <constructor-arg index="2" ref="data_bean2"/>
-        <constructor-arg index="3" ref="data_bean2"/>
-    </bean>
+<!--    <bean id="obj15" class="beans.TestAutoWired.TestAutoWired3">-->
+<!--        <constructor-arg index="0" value="1972" type="int"/>-->
+<!--        <constructor-arg index="1" value="조병옥" />-->
+<!--        <constructor-arg index="2" ref="data_bean2"/>-->
+<!--        <constructor-arg index="3" ref="data_bean2"/>-->
+<!--    </bean>-->
 
-    <bean id="obj16" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor">
-        <constructor-arg index="0" value="1972" type="int"/>
-        <constructor-arg index="1" value="심영"/>
-    </bean>
+<!--    <bean id="obj16" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor">-->
+<!--        <constructor-arg index="0" value="1972" type="int"/>-->
+<!--        <constructor-arg index="1" value="심영"/>-->
+<!--    </bean>-->
 
     <!--
         autowire 의 default 값을 지정할 수 있다.
         beans.xml 최상단에 default-autowire 를 추가하면, 지정한 autowire 조건에 따라 자동주입한다.
         만일 이를 막고자 한다면, 해당하는 bean 에 autowire="no" 를 추가한다.
     -->
-    <bean id="obj17" class="beans.TestAutoWired.TestAutoWired"/>
-    <bean id="obj18" class="beans.TestAutoWired.TestAutoWired" autowire="no"/>
+<!--    <bean id="obj17" class="beans.TestAutoWired.TestAutoWired"/>-->
+<!--    <bean id="obj18" class="beans.TestAutoWired.TestAutoWired" autowire="no"/>-->
 </beans>
