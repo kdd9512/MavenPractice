@@ -324,4 +324,17 @@
     -->
 <!--    <bean id="obj17" class="beans.TestAutoWired.TestAutoWired"/>-->
 <!--    <bean id="obj18" class="beans.TestAutoWired.TestAutoWired" autowire="no"/>-->
+
+    <!--
+        BeanConfigClass 예제.
+        xml 파일 이용하여 bean 호출.
+    -->
+    <bean id="t14" class="beans.BeanConfigClass.TestBeanConfigClass"/>
+    <bean id="t15" class="beans.BeanConfigClass.TestBeanConfigClass2" lazy-init="true"/>
+    <bean id="t16" class="beans.BeanConfigClass.TestBeanConfigClass2" scope="prototype"/>
+
+    <!-- primary 지정으로 같은 class 값을 갖는 bean 이 복수 존재할 경우 우선 호출할 bean을 지정한다. -->
+    <bean class="beans.BeanConfigClass.TestBeanConfigClass3" primary="true"/>
+    <bean class="beans.BeanConfigClass.TestBeanConfigClass3"/>
+
 </beans>
