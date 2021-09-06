@@ -38,7 +38,7 @@ public class MainBeanConfiguration {
         ctx1.close();
 
 
-        System.out.println("=======================================");
+        System.out.println("================= Annotation =================");
 
         // @Configuration annotation 이 붙은 java 파일을 이용하는 방식.
         AnnotationConfigApplicationContext ctx2 = new AnnotationConfigApplicationContext(BeanConfigClass.class);

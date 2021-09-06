@@ -4,8 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-init-method="default_Init"
-       default-destroy-method="default_Destroy"
-       default-autowire="byName">
+       default-destroy-method="default_Destroy">
+<!--       default-autowire="byName"-->
+<!--&gt;-->
+
     <!-- <bean id="helloE" class="beans.TestSpringIntro.HelloWorldEn"/>-->
     <!-- <bean id="helloK" class="beans.TestSpringIntro.HelloWorldKr"/>-->
 
@@ -269,6 +271,7 @@
 <!--        </props>-->
 <!--    </property>-->
 <!--</bean>-->
+
     <!-- ref 로 불러온것이 이하 bean 과 같은 값임을 확인하기 위해 singleton 으로 scope 를 설정 -->
 <!--    <bean id="data_bean" class="beans.TestCollectionDI.CollectionDataBeans"/>-->
 
@@ -329,12 +332,53 @@
         BeanConfigClass 예제.
         xml 파일 이용하여 bean 호출.
     -->
-    <bean id="t14" class="beans.BeanConfigClass.TestBeanConfigClass"/>
-    <bean id="t15" class="beans.BeanConfigClass.TestBeanConfigClass2" lazy-init="true"/>
-    <bean id="t16" class="beans.BeanConfigClass.TestBeanConfigClass2" scope="prototype"/>
+
+<!--    <bean id="t14" class="beans.BeanConfigClass.TestBeanConfigClass"/>-->
+<!--    <bean id="t15" class="beans.BeanConfigClass.TestBeanConfigClass2" lazy-init="true"/>-->
+<!--    <bean id="t16" class="beans.BeanConfigClass.TestBeanConfigClass2" scope="prototype"/>-->
 
     <!-- primary 지정으로 같은 class 값을 갖는 bean 이 복수 존재할 경우 우선 호출할 bean을 지정한다. -->
-    <bean class="beans.BeanConfigClass.TestBeanConfigClass3" primary="true"/>
-    <bean class="beans.BeanConfigClass.TestBeanConfigClass3"/>
+<!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3" primary="true"/>-->
+<!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3"/>-->
+
+    <!--
+        java 파일로 init/destroy 예제.
+    -->
+
+    <bean
+            id="t17"
+            class="beans.InitDestroy.TestInitDestroy"
+            lazy-init="true"
+            init-method="init"
+            destroy-method="destroy"
+    />
+
+    <!-- java 파일로 주입 예제 -->
+
+    <bean id="t18" class="beans.JavaDI.VOJavaDI.TestJavaDI" lazy-init="true">
+    <!--
+        생성자(constructor)를 통한 주입이므로 constructor-arg 태그를 이용.
+    -->
+        <constructor-arg name="data1" index="0" value="1972" type="int"/>
+        <constructor-arg name="data2" index="1" value="형사양반"/>
+        <constructor-arg name="data3" index="2" ref="data_bean3"/>
+    </bean>
+
+    <bean id="t19" class="beans.JavaDI.VOJavaDI.TestJavaDI" lazy-init="true">
+    <!--
+        setter 메서드를 이용하는 경우, property 태그를 사용.
+    -->
+        <property name="data1" value="1972"/>
+        <property name="data2" value="정진영"/>
+        <property name="data3" ref="data_bean3"/>
+    </bean>
+
+    <bean id="data_bean3" class="beans.JavaDI.DataJavaDI"/>
+
+    <bean id="data1" class="beans.JavaDI.DataJavaDI2"/>
+    <bean id="data2" class="beans.JavaDI.DataJavaDI2"/>
+
+    <bean id="t20" class="beans.JavaDI.VOJavaDI.TestJavaDI2" lazy-init="true" autowire="byName"/>
+    <bean id="t21" class="beans.JavaDI.VOJavaDI.TestJavaDI3" lazy-init="true" autowire="byType"/>
 
 </beans>
