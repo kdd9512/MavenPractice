@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-                           http://www.springframework.org/schema/beans/spring-beans.xsd"
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="default_Init"
        default-destroy-method="default_Destroy">
 <!--       default-autowire="byName"-->
@@ -345,40 +348,59 @@
         java 파일로 init/destroy 예제.
     -->
 
-    <bean
-            id="t17"
-            class="beans.InitDestroy.TestInitDestroy"
-            lazy-init="true"
-            init-method="init"
-            destroy-method="destroy"
-    />
+<!--    <bean-->
+<!--            id="t17"-->
+<!--            class="beans.InitDestroy.TestInitDestroy"-->
+<!--            lazy-init="true"-->
+<!--            init-method="init"-->
+<!--            destroy-method="destroy"-->
+<!--    />-->
 
     <!-- java 파일로 주입 예제 -->
 
-    <bean id="t18" class="beans.JavaDI.VOJavaDI.TestJavaDI" lazy-init="true">
-    <!--
-        생성자(constructor)를 통한 주입이므로 constructor-arg 태그를 이용.
-    -->
-        <constructor-arg name="data1" index="0" value="1972" type="int"/>
-        <constructor-arg name="data2" index="1" value="형사양반"/>
-        <constructor-arg name="data3" index="2" ref="data_bean3"/>
-    </bean>
+<!--    <bean id="t18" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
+<!--    &lt;!&ndash;-->
+<!--        생성자(constructor)를 통한 주입이므로 constructor-arg 태그를 이용.-->
+<!--    &ndash;&gt;-->
+<!--        <constructor-arg name="data1" index="0" value="1972" type="int"/>-->
+<!--        <constructor-arg name="data2" index="1" value="형사양반"/>-->
+<!--        <constructor-arg name="data3" index="2" ref="data_bean3"/>-->
+<!--    </bean>-->
 
-    <bean id="t19" class="beans.JavaDI.VOJavaDI.TestJavaDI" lazy-init="true">
+<!--    <bean id="t19" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
+<!--            -->
     <!--
         setter 메서드를 이용하는 경우, property 태그를 사용.
     -->
+<!--        <property name="data1" value="1972"/>-->
+<!--        <property name="data2" value="정진영"/>-->
+<!--        <property name="data3" ref="data_bean3"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="data_bean3" class="beans.JavaDI.DataJavaDI"/>-->
+
+<!--    <bean id="data1" class="beans.JavaDI.DataJavaDI2"/>-->
+<!--    <bean id="data2" class="beans.JavaDI.DataJavaDI2"/>-->
+
+<!--    <bean id="t20" class="beans.JavaDI.TestJavaDI.TestJavaDI2" lazy-init="true" autowire="byName"/>-->
+<!--    <bean id="t21" class="beans.JavaDI.TestJavaDI.TestJavaDI3" lazy-init="true" autowire="byType"/>-->
+
+
+      <!--
+        bean 클래스에 설정되어 있는 annotation 을 이용한다.
+      -->
+    <context:annotation-config/>
+    <bean id="t22" class="beans.AnnotationBean.AnnotationBean">
         <property name="data1" value="1972"/>
-        <property name="data2" value="정진영"/>
-        <property name="data3" ref="data_bean3"/>
     </bean>
 
-    <bean id="data_bean3" class="beans.JavaDI.DataJavaDI"/>
+    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData"/>
 
-    <bean id="data1" class="beans.JavaDI.DataJavaDI2"/>
-    <bean id="data2" class="beans.JavaDI.DataJavaDI2"/>
+    <bean id="obj19" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>
+    <bean id="obj20" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>
 
-    <bean id="t20" class="beans.JavaDI.VOJavaDI.TestJavaDI2" lazy-init="true" autowire="byName"/>
-    <bean id="t21" class="beans.JavaDI.VOJavaDI.TestJavaDI3" lazy-init="true" autowire="byType"/>
+    <bean id="t23" class="beans.AnnotationBean.AnnotationBean2"/>
+    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData3"/>
+    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData4"/>
 
 </beans>

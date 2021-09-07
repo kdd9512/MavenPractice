@@ -1,4 +1,4 @@
-package beans.JavaDI.VOJavaDI;
+package beans.JavaDI.TestJavaDI;
 
 import beans.JavaDI.DataJavaDI3;
 

@@ -1,8 +1,8 @@
 package beans.JavaDI;
 
-import beans.JavaDI.VOJavaDI.TestJavaDI;
-import beans.JavaDI.VOJavaDI.TestJavaDI2;
-import beans.JavaDI.VOJavaDI.TestJavaDI3;
+import beans.JavaDI.TestJavaDI.TestJavaDI;
+import beans.JavaDI.TestJavaDI.TestJavaDI2;
+import beans.JavaDI.TestJavaDI.TestJavaDI3;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

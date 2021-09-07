@@ -25,6 +25,8 @@
           <file>file://$MODULE_DIR$/src/main/resources/beans.xml</file>
           <file>file://$MODULE_DIR$/src/main/java/beans/BeanConfigClass/BeanConfigClass.java</file>
           <file>file://$MODULE_DIR$/src/main/java/beans/JavaDI/BeanConfigClass3.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/beans/AnnotationBean/AnnotationBeanConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/beans/InitDestroy/BeanConfigClass2.java</file>
         </fileset>
       </configuration>
     </facet>
