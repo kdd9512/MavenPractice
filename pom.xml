@@ -67,7 +67,6 @@
             </exclusions>
             <scope>runtime</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
     <!--  java annotation   -->
         <dependency>
             <groupId>javax.annotation</groupId>
