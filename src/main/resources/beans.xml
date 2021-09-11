@@ -389,18 +389,29 @@
       <!--
         bean 클래스에 설정되어 있는 annotation 을 이용한다.
       -->
-    <context:annotation-config/>
-    <bean id="t22" class="beans.AnnotationBean.AnnotationBean">
-        <property name="data1" value="1972"/>
-    </bean>
+<!--    <context:annotation-config/>-->
+<!--    <bean id="t22" class="beans.AnnotationBean.AnnotationBean">-->
+<!--        <property name="data1" value="1972"/>-->
+<!--    </bean>-->
 
-    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData"/>
+<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData"/>-->
 
-    <bean id="obj19" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>
-    <bean id="obj20" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>
+<!--    <bean id="obj19" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
+<!--    <bean id="obj20" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
 
-    <bean id="t23" class="beans.AnnotationBean.AnnotationBean2"/>
-    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData3"/>
-    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData4"/>
+<!--    <bean id="t23" class="beans.AnnotationBean.AnnotationBean2"/>-->
+<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData3"/>-->
+<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData4"/>-->
+
+    <!--
+        Component
+        1. xml 을 이용하는 방식.
+         bean 에 설정된 설정들을 탐색하기 위해 context:component-scan
+         를 입력하고 경로를 beans 와 beans2 로 잡아준다
+    -->
+
+    <context:component-scan base-package="beans"/>
+    <context:component-scan base-package="beans2"/>
+
 
 </beans>
