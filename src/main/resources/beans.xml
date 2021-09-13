@@ -409,16 +409,17 @@
          bean 에 설정된 설정들을 탐색하기 위해 context:component-scan
          를 입력하고 경로를 beans 와 beans2 로 잡아준다
     -->
-        <bean class="beans.Component.TestForComponent"/>
-        <bean id="t24" class="beans.Component.TestForComponent2" />
-        <bean id="t25" class="beans.Component.TestForComponent2" />
+<!--        <bean class="beans.Component.TestForComponent"/>-->
+<!--        <bean id="t24" class="beans.Component.TestForComponent2" />-->
+<!--        <bean id="t25" class="beans.Component.TestForComponent2" />-->
 
         <!--   지정된 패키지 안에 있는 bean 클래스들의 어노테이션을 분석하도록 지정.  -->
-        <context:component-scan base-package="beans.Component.TestBeans"/>
-        <context:component-scan base-package="beans.Component.TestBeans2"/>
+<!--        <context:component-scan base-package="beans.Component.TestBeans"/>-->
+<!--        <context:component-scan base-package="beans.Component.TestBeans2"/>-->
 
-        <bean id="c3" class="beans.Component.TestBeans.TestForComponent4"/>
-        <bean id="c4" class="beans.Component.TestBeans.TestForComponent4"/>
+<!--        <bean id="c3" class="beans.Component.TestBeans.TestForComponent4"/>-->
+<!--        <bean id="c4" class="beans.Component.TestBeans.TestForComponent4"/>-->
+
 
 
 </beans>
