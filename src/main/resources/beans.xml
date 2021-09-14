@@ -2,14 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context.xsd"
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-init-method="default_Init"
        default-destroy-method="default_Destroy">
-<!--       default-autowire="byName"-->
-<!--&gt;-->
+    <!--       default-autowire="byName"-->
+    <!--&gt;-->
 
     <!-- <bean id="helloE" class="beans.TestSpringIntro.HelloWorldEn"/>-->
     <!-- <bean id="helloK" class="beans.TestSpringIntro.HelloWorldKr"/>-->
@@ -49,359 +52,359 @@
         IoC 컨테이너의 close 메서드를 호출하면 객체가 소멸되며 destroy 메서드에 설정한 메서드가 자동으로 호출된다.
     -->
 
-<!--    <bean id="t6"-->
-<!--          class="beans.TestLifeCycle.TestLifeCycle"-->
-<!--          lazy-init="true"-->
-<!--          init-method="default_Init"-->
-<!--          destroy-method="default_Destroy"-->
-<!--    />-->
+    <!--    <bean id="t6"-->
+    <!--          class="beans.TestLifeCycle.TestLifeCycle"-->
+    <!--          lazy-init="true"-->
+    <!--          init-method="default_Init"-->
+    <!--          destroy-method="default_Destroy"-->
+    <!--    />-->
 
     <!-- init_method 와  destroy_method 가 설정되어 있지 않다면, default 값을 우선한다. -->
-<!--    <bean id="t7"-->
-<!--          class="beans.TestLifeCycle.TestLifeCycle2"-->
-<!--          lazy-init="true"-->
-<!--    />-->
+    <!--    <bean id="t7"-->
+    <!--          class="beans.TestLifeCycle.TestLifeCycle2"-->
+    <!--          lazy-init="true"-->
+    <!--    />-->
 
     <!--
         위(t7)와는 반대로, init_method 와  destroy_method 가 설정되어 있다면,
         default 가 아닌, "설정되어 있는 메서드"를 우선시한다.
     -->
-<!--    <bean id="t8"-->
-<!--          class="beans.TestLifeCycle.TestLifeCycle3"-->
-<!--          lazy-init="true"-->
-<!--          init-method="bean3_Init"-->
-<!--          destroy-method="bean3_Destroy"-->
-<!--    />-->
+    <!--    <bean id="t8"-->
+    <!--          class="beans.TestLifeCycle.TestLifeCycle3"-->
+    <!--          lazy-init="true"-->
+    <!--          init-method="bean3_Init"-->
+    <!--          destroy-method="bean3_Destroy"-->
+    <!--    />-->
 
     <!--
         1. 설정한 메서드가 존재하지 않는다면 무시된다.
         2. init-method / destroy-method 를 설정했으나 존재하지 않는 경우,
            오류가 발생한다.(** default 값을 이용하는 것이 아님을 유의할 것.)
     -->
-<!--    <bean id="t9"-->
-<!--          class="beans.TestLifeCycle.TestLifeCycle4"-->
-<!--          lazy-init="true"-->
-<!--    />-->
+    <!--    <bean id="t9"-->
+    <!--          class="beans.TestLifeCycle.TestLifeCycle4"-->
+    <!--          lazy-init="true"-->
+    <!--    />-->
 
 
-<!--    <bean id="t10"-->
-<!--          class="beans.TestBeanPostProcessor.TestBpp"-->
-<!--          lazy-init="true"-->
-<!--          init-method="bean_Init"-->
-<!--          destroy-method="bean_Destroy"-->
-<!--    />-->
-<!--    <bean id="t11"-->
-<!--          class="beans.TestBeanPostProcessor.TestBpp2"-->
-<!--          lazy-init="true"-->
-<!--          init-method="bean_Init2"-->
-<!--          destroy-method="bean_Destroy2"-->
-<!--    />-->
+    <!--    <bean id="t10"-->
+    <!--          class="beans.TestBeanPostProcessor.TestBpp"-->
+    <!--          lazy-init="true"-->
+    <!--          init-method="bean_Init"-->
+    <!--          destroy-method="bean_Destroy"-->
+    <!--    />-->
+    <!--    <bean id="t11"-->
+    <!--          class="beans.TestBeanPostProcessor.TestBpp2"-->
+    <!--          lazy-init="true"-->
+    <!--          init-method="bean_Init2"-->
+    <!--          destroy-method="bean_Destroy2"-->
+    <!--    />-->
 
     <!-- BeanPostProcessor 호출 bean -->
-<!--    <bean class="beans.TestBeanPostProcessor.processor.TestBeanPostProcessor"/>-->
+    <!--    <bean class="beans.TestBeanPostProcessor.processor.TestBeanPostProcessor"/>-->
 
 
-<!-- Constructor Data Injection -->
-<!--    <bean id="obj1" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true"/>-->
-<!--    <bean id="obj2" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="125"/>-->
-<!--    </bean>-->
-<!--    <bean id="obj3" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="19.72"/>-->
-<!--    </bean>-->
-<!--    <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="김두한"/>-->
-<!--    </bean>-->
+    <!-- Constructor Data Injection -->
+    <!--    <bean id="obj1" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true"/>-->
+    <!--    <bean id="obj2" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="125"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="obj3" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="19.72"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="obj4" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="김두한"/>-->
+    <!--    </bean>-->
 
     <!-- 복수의 데이터를 주입할 경우, 아래와 같이 constructor-arg 를 복수 사용한다.-->
-<!--    <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="1972" type="int"/>-->
-<!--        <constructor-arg value="11.21" type="double"/>-->
-<!--        <constructor-arg value="심영" type="java.lang.String"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj5" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="1972" type="int"/>-->
+    <!--        <constructor-arg value="11.21" type="double"/>-->
+    <!--        <constructor-arg value="심영" type="java.lang.String"/>-->
+    <!--    </bean>-->
 
     <!--
      injection 은 하드코딩과는 다르게 데이터 주입 순서가 일치하지 않더라도 정상 작동한다.
      이는 순서대로 주입할 수 없는 경우, 데이터를 모두 주입할 수 있는 생성자를 찾는 injection 의 특성때문이다.
      단, 결과값이 이상해진다거나 하는 등의 문제가 발생할 수 있기 때문에 순서에 맞춰서 주입하는 것이 좋다.
      -->
-<!--    <bean id="obj6" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="1972" type="int"/>-->
-<!--        <constructor-arg value="상하이조" type="java.lang.String"/>-->
-<!--        <constructor-arg value="11.21" type="double"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj6" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="1972" type="int"/>-->
+    <!--        <constructor-arg value="상하이조" type="java.lang.String"/>-->
+    <!--        <constructor-arg value="11.21" type="double"/>-->
+    <!--    </bean>-->
 
     <!--
         index 를 정의하여 데이터를 주입할 순서를 지정할 수 있다. 이는 같은 타입의 데이터의 순서를 구분할 때 사용한다.
         물론 순서는 0부터 시작.
     -->
-<!--    <bean id="obj7" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
-<!--        <constructor-arg value="의사양반" type="java.lang.String" index="2"/>-->
-<!--        <constructor-arg value="11.21" type="double" index="1"/>-->
-<!--        <constructor-arg value="1972" type="int" index="0"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj7" class="beans.TestConstructorDI.TestConstructorDI" lazy-init="true">-->
+    <!--        <constructor-arg value="의사양반" type="java.lang.String" index="2"/>-->
+    <!--        <constructor-arg value="11.21" type="double" index="1"/>-->
+    <!--        <constructor-arg value="1972" type="int" index="0"/>-->
+    <!--    </bean>-->
 
     <!-- bean 에서 객체를 주입. -->
-<!--    <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
-<!--        <constructor-arg>-->
-<!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
-<!--        </constructor-arg>-->
-<!--        <constructor-arg>-->
-<!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
-<!--        </constructor-arg>-->
-<!--    </bean>-->
+    <!--    <bean id="obj8" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
+    <!--        <constructor-arg>-->
+    <!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
+    <!--        </constructor-arg>-->
+    <!--        <constructor-arg>-->
+    <!--            <bean class="beans.TestConstructorDI.DataBean"/>-->
+    <!--        </constructor-arg>-->
+    <!--    </bean>-->
 
     <!--
         이미 정의되어 있는 객체를 주입.
         매번 새로운 객체를 주입하기 위해 scope 는 prototype 으로.
     -->
 
-<!--    <bean id="dataBean" class="beans.TestConstructorDI.DataBean" scope="prototype"/>-->
-<!--    <bean id="obj9" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
-<!--        <constructor-arg ref="dataBean"/>-->
-<!--        <constructor-arg ref="dataBean"/>-->
-<!--    </bean>-->
+    <!--    <bean id="dataBean" class="beans.TestConstructorDI.DataBean" scope="prototype"/>-->
+    <!--    <bean id="obj9" class="beans.TestConstructorDI.TestConstructorDI2" lazy-init="true">-->
+    <!--        <constructor-arg ref="dataBean"/>-->
+    <!--        <constructor-arg ref="dataBean"/>-->
+    <!--    </bean>-->
 
-<!--    <bean id="t12" class="beans.TestSetterDI.TestSetterDI" lazy-init="true">-->
-<!--        <property name="data1" value="1972"/>-->
-<!--        <property name="data2" value="11.21"/>-->
-<!--        <property name="data3" value="true"/>-->
-<!--        <property name="data4" value="김두한"/>-->
-<!--        <property name="data5">-->
-<!--            <bean class="beans.TestSetterDI.DataBean"/>-->
-<!--        </property>-->
-<!--        <property name="data6" ref="dataBean"/>-->
-<!--    </bean>-->
-<!--    <bean id="dataBean" class="beans.TestSetterDI.DataBean"/>-->
+    <!--    <bean id="t12" class="beans.TestSetterDI.TestSetterDI" lazy-init="true">-->
+    <!--        <property name="data1" value="1972"/>-->
+    <!--        <property name="data2" value="11.21"/>-->
+    <!--        <property name="data3" value="true"/>-->
+    <!--        <property name="data4" value="김두한"/>-->
+    <!--        <property name="data5">-->
+    <!--            <bean class="beans.TestSetterDI.DataBean"/>-->
+    <!--        </property>-->
+    <!--        <property name="data6" ref="dataBean"/>-->
+    <!--    </bean>-->
+    <!--    <bean id="dataBean" class="beans.TestSetterDI.DataBean"/>-->
 
-<!--<bean id="t13" class="beans.TestCollectionDI.TestCollectionDI">-->
+    <!--<bean id="t13" class="beans.TestCollectionDI.TestCollectionDI">-->
 
-<!--    &lt;!&ndash; generic 이 String 인 List &ndash;&gt;-->
-<!--    <property name="list1">-->
-<!--        <list>-->
-<!--            <value>1972</value>-->
-<!--            <value>1121</value>-->
-<!--            <value>김두한</value>-->
-<!--        </list>-->
-<!--    </property>-->
+    <!--    &lt;!&ndash; generic 이 String 인 List &ndash;&gt;-->
+    <!--    <property name="list1">-->
+    <!--        <list>-->
+    <!--            <value>1972</value>-->
+    <!--            <value>1121</value>-->
+    <!--            <value>김두한</value>-->
+    <!--        </list>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; generic 이 Integer 인 List &ndash;&gt;-->
-<!--    <property name="list2">-->
-<!--        <list>-->
-<!--            <value type="int">1972</value>-->
-<!--            <value type="int">1121</value>-->
-<!--            <value type="int">8888</value>-->
-<!--        </list>-->
-<!--    </property>-->
+    <!--    &lt;!&ndash; generic 이 Integer 인 List &ndash;&gt;-->
+    <!--    <property name="list2">-->
+    <!--        <list>-->
+    <!--            <value type="int">1972</value>-->
+    <!--            <value type="int">1121</value>-->
+    <!--            <value type="int">8888</value>-->
+    <!--        </list>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; generic 이 Object 인 List &ndash;&gt;-->
-<!--    <property name="list3">-->
-<!--        <list>-->
-<!--    &lt;!&ndash; 객체를 주입하는 것이므로 bean 을 넣는다. &ndash;&gt;-->
-<!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
-<!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--    &lt;!&ndash; generic 이 Object 인 List &ndash;&gt;-->
+    <!--    <property name="list3">-->
+    <!--        <list>-->
+    <!--    &lt;!&ndash; 객체를 주입하는 것이므로 bean 을 넣는다. &ndash;&gt;-->
+    <!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
 
-<!--            &lt;!&ndash;-->
-<!--                기존에 정의되어 있었던 bean 을 주입.-->
-<!--                원래는 같은 id의 bean 은 단 한번만 주입되기 때문에 한 번만 출력되는 것이 정상이나,-->
-<!--                이 경우 List 이므로 내부에 기록된 Object 의 주소값이 요청한 만큼 전부 출력된다(중복 관계 없이).-->
-<!--                List 내부의 데이터로 취급하기 때문.-->
-<!--            &ndash;&gt;-->
-<!--            <ref bean="data_bean"/>-->
-<!--            <ref bean="data_bean"/>-->
-<!--        </list>-->
-<!--    </property>-->
+    <!--            &lt;!&ndash;-->
+    <!--                기존에 정의되어 있었던 bean 을 주입.-->
+    <!--                원래는 같은 id의 bean 은 단 한번만 주입되기 때문에 한 번만 출력되는 것이 정상이나,-->
+    <!--                이 경우 List 이므로 내부에 기록된 Object 의 주소값이 요청한 만큼 전부 출력된다(중복 관계 없이).-->
+    <!--                List 내부의 데이터로 취급하기 때문.-->
+    <!--            &ndash;&gt;-->
+    <!--            <ref bean="data_bean"/>-->
+    <!--            <ref bean="data_bean"/>-->
+    <!--        </list>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; generic 이 String 인 Set &ndash;&gt;-->
-<!--    <property name="set1">-->
-<!--        <set>-->
-<!--            <value>1972</value>-->
-<!--            <value>1121</value>-->
-<!--            <value>정진영</value>-->
-<!--        </set>-->
-<!--    </property>-->
+    <!--    &lt;!&ndash; generic 이 String 인 Set &ndash;&gt;-->
+    <!--    <property name="set1">-->
+    <!--        <set>-->
+    <!--            <value>1972</value>-->
+    <!--            <value>1121</value>-->
+    <!--            <value>정진영</value>-->
+    <!--        </set>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; generic 이 Integer 인 Set &ndash;&gt;-->
-<!--    <property name="set2">-->
-<!--        <set>-->
-<!--            <value>1972</value>-->
-<!--            <value>1121</value>-->
-<!--            <value>1234</value>-->
-<!--        </set>-->
-<!--    </property>-->
+    <!--    &lt;!&ndash; generic 이 Integer 인 Set &ndash;&gt;-->
+    <!--    <property name="set2">-->
+    <!--        <set>-->
+    <!--            <value>1972</value>-->
+    <!--            <value>1121</value>-->
+    <!--            <value>1234</value>-->
+    <!--        </set>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; generic 이 Object 인 Set &ndash;&gt;-->
-<!--    <property name="set3">-->
-<!--        <set>-->
-<!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
-<!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--    &lt;!&ndash; generic 이 Object 인 Set &ndash;&gt;-->
+    <!--    <property name="set3">-->
+    <!--        <set>-->
+    <!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--            <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
 
-<!--            &lt;!&ndash;-->
-<!--                기존에 정의되어 있었던 bean 을 주입.-->
-<!--                ref 는 2번인데, 출력이 한 번만 동작한다.-->
-<!--                이는 Spring 에서 같은 id의 bean 은 단 한번만 주입되기 때문이다.-->
-<!--            &ndash;&gt;-->
-<!--            <ref bean="data_bean"/>-->
-<!--            <ref bean="data_bean"/>-->
-<!--        </set>-->
-<!--    </property>-->
+    <!--            &lt;!&ndash;-->
+    <!--                기존에 정의되어 있었던 bean 을 주입.-->
+    <!--                ref 는 2번인데, 출력이 한 번만 동작한다.-->
+    <!--                이는 Spring 에서 같은 id의 bean 은 단 한번만 주입되기 때문이다.-->
+    <!--            &ndash;&gt;-->
+    <!--            <ref bean="data_bean"/>-->
+    <!--            <ref bean="data_bean"/>-->
+    <!--        </set>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; Map &ndash;&gt;-->
-<!--    <property name="map1">-->
-<!--        <map>-->
-<!--            <entry key="a1" value="의사양반"/>-->
-<!--            <entry key="a2" value="1972" value-type="java.lang.Integer"/>-->
-<!--            <entry key="a3">-->
-<!--                <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
-<!--            </entry>-->
-<!--            <entry key="a4" value-ref="data_bean"/>-->
-<!--            <entry key="a5">-->
-<!--                <list>-->
-<!--                    <value type="java.lang.String">이보시오</value>-->
-<!--                    <value type="java.lang.String">으사양반</value>-->
-<!--                    <value type="java.lang.String">앍핡핡핡</value>-->
-<!--                </list>-->
-<!--            </entry>-->
-<!--        </map>-->
-<!--    </property>-->
+    <!--    &lt;!&ndash; Map &ndash;&gt;-->
+    <!--    <property name="map1">-->
+    <!--        <map>-->
+    <!--            <entry key="a1" value="의사양반"/>-->
+    <!--            <entry key="a2" value="1972" value-type="java.lang.Integer"/>-->
+    <!--            <entry key="a3">-->
+    <!--                <bean class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--            </entry>-->
+    <!--            <entry key="a4" value-ref="data_bean"/>-->
+    <!--            <entry key="a5">-->
+    <!--                <list>-->
+    <!--                    <value type="java.lang.String">이보시오</value>-->
+    <!--                    <value type="java.lang.String">으사양반</value>-->
+    <!--                    <value type="java.lang.String">앍핡핡핡</value>-->
+    <!--                </list>-->
+    <!--            </entry>-->
+    <!--        </map>-->
+    <!--    </property>-->
 
-<!--    &lt;!&ndash; Property(prop) &ndash;&gt;-->
-<!--    <property name="prop1">-->
-<!--        <props>-->
-<!--            <prop key="p1">1972</prop>-->
-<!--            <prop key="p2">1121</prop>-->
-<!--            <prop key="p3">상하이조</prop>-->
-<!--        </props>-->
-<!--    </property>-->
-<!--</bean>-->
+    <!--    &lt;!&ndash; Property(prop) &ndash;&gt;-->
+    <!--    <property name="prop1">-->
+    <!--        <props>-->
+    <!--            <prop key="p1">1972</prop>-->
+    <!--            <prop key="p2">1121</prop>-->
+    <!--            <prop key="p3">상하이조</prop>-->
+    <!--        </props>-->
+    <!--    </property>-->
+    <!--</bean>-->
 
     <!-- ref 로 불러온것이 이하 bean 과 같은 값임을 확인하기 위해 singleton 으로 scope 를 설정 -->
-<!--    <bean id="data_bean" class="beans.TestCollectionDI.CollectionDataBeans"/>-->
+    <!--    <bean id="data_bean" class="beans.TestCollectionDI.CollectionDataBeans"/>-->
 
 
     <!-- AUTOWIRE 자동주입. -->
 
-   <!-- <bean id="obj10" class="beans.TestAutoWired.TestAutoWired">
-        <property name="data1" ref="data_bean1"/>
-        <property name="data2" ref="data_bean1"/>
-    </bean>-->
+    <!-- <bean id="obj10" class="beans.TestAutoWired.TestAutoWired">
+         <property name="data1" ref="data_bean1"/>
+         <property name="data2" ref="data_bean1"/>
+     </bean>-->
 
     <!--<bean id="data_bean1" class="beans.TestAutoWired.AutoWiredDataBean" scope="prototype"/>-->
 
     <!-- AutoWire byName -->
-<!--    <bean id="obj11" class="beans.TestAutoWired.TestAutoWired" autowire="byName"/>-->
+    <!--    <bean id="obj11" class="beans.TestAutoWired.TestAutoWired" autowire="byName"/>-->
 
-<!--    <bean id="data1" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
-<!--    <bean id="data2" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
+    <!--    <bean id="data1" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
+    <!--    <bean id="data2" class="beans.TestAutoWired.AutoWiredDataBean"/>-->
 
     <!-- AutoWire byType -->
-<!--    <bean id="obj12" class="beans.TestAutoWired.TestAutoWired2" autowire="byType"/>-->
+    <!--    <bean id="obj12" class="beans.TestAutoWired.TestAutoWired2" autowire="byType"/>-->
 
     <!--
         ** 동일한 타입의 bean 이 2개 이상 정의되어 있으면 안된다.
     -->
-<!--    <bean id="data_bean2" class="beans.TestAutoWired.AutoWiredDataBean2"/>-->
+    <!--    <bean id="data_bean2" class="beans.TestAutoWired.AutoWiredDataBean2"/>-->
 
 
     <!-- AutoWire constructor -->
-<!--    <bean id="obj13" class="beans.TestAutoWired.TestAutoWired3">-->
-<!--        <constructor-arg index="0" ref="data_bean2"/>-->
-<!--        <constructor-arg index="1" ref="data_bean2"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj13" class="beans.TestAutoWired.TestAutoWired3">-->
+    <!--        <constructor-arg index="0" ref="data_bean2"/>-->
+    <!--        <constructor-arg index="1" ref="data_bean2"/>-->
+    <!--    </bean>-->
 
-<!--    <bean id="obj14" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor"/>-->
+    <!--    <bean id="obj14" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor"/>-->
 
-<!--    <bean id="obj15" class="beans.TestAutoWired.TestAutoWired3">-->
-<!--        <constructor-arg index="0" value="1972" type="int"/>-->
-<!--        <constructor-arg index="1" value="조병옥" />-->
-<!--        <constructor-arg index="2" ref="data_bean2"/>-->
-<!--        <constructor-arg index="3" ref="data_bean2"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj15" class="beans.TestAutoWired.TestAutoWired3">-->
+    <!--        <constructor-arg index="0" value="1972" type="int"/>-->
+    <!--        <constructor-arg index="1" value="조병옥" />-->
+    <!--        <constructor-arg index="2" ref="data_bean2"/>-->
+    <!--        <constructor-arg index="3" ref="data_bean2"/>-->
+    <!--    </bean>-->
 
-<!--    <bean id="obj16" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor">-->
-<!--        <constructor-arg index="0" value="1972" type="int"/>-->
-<!--        <constructor-arg index="1" value="심영"/>-->
-<!--    </bean>-->
+    <!--    <bean id="obj16" class="beans.TestAutoWired.TestAutoWired3" autowire="constructor">-->
+    <!--        <constructor-arg index="0" value="1972" type="int"/>-->
+    <!--        <constructor-arg index="1" value="심영"/>-->
+    <!--    </bean>-->
 
     <!--
         autowire 의 default 값을 지정할 수 있다.
         beans.xml 최상단에 default-autowire 를 추가하면, 지정한 autowire 조건에 따라 자동주입한다.
         만일 이를 막고자 한다면, 해당하는 bean 에 autowire="no" 를 추가한다.
     -->
-<!--    <bean id="obj17" class="beans.TestAutoWired.TestAutoWired"/>-->
-<!--    <bean id="obj18" class="beans.TestAutoWired.TestAutoWired" autowire="no"/>-->
+    <!--    <bean id="obj17" class="beans.TestAutoWired.TestAutoWired"/>-->
+    <!--    <bean id="obj18" class="beans.TestAutoWired.TestAutoWired" autowire="no"/>-->
 
     <!--
         BeanConfigClass 예제.
         xml 파일 이용하여 bean 호출.
     -->
 
-<!--    <bean id="t14" class="beans.BeanConfigClass.TestBeanConfigClass"/>-->
-<!--    <bean id="t15" class="beans.BeanConfigClass.TestBeanConfigClass2" lazy-init="true"/>-->
-<!--    <bean id="t16" class="beans.BeanConfigClass.TestBeanConfigClass2" scope="prototype"/>-->
+    <!--    <bean id="t14" class="beans.BeanConfigClass.TestBeanConfigClass"/>-->
+    <!--    <bean id="t15" class="beans.BeanConfigClass.TestBeanConfigClass2" lazy-init="true"/>-->
+    <!--    <bean id="t16" class="beans.BeanConfigClass.TestBeanConfigClass2" scope="prototype"/>-->
 
     <!-- primary 지정으로 같은 class 값을 갖는 bean 이 복수 존재할 경우 우선 호출할 bean을 지정한다. -->
-<!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3" primary="true"/>-->
-<!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3"/>-->
+    <!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3" primary="true"/>-->
+    <!--    <bean class="beans.BeanConfigClass.TestBeanConfigClass3"/>-->
 
     <!--
         java 파일로 init/destroy 예제.
     -->
 
-<!--    <bean-->
-<!--            id="t17"-->
-<!--            class="beans.InitDestroy.TestInitDestroy"-->
-<!--            lazy-init="true"-->
-<!--            init-method="init"-->
-<!--            destroy-method="destroy"-->
-<!--    />-->
+    <!--    <bean-->
+    <!--            id="t17"-->
+    <!--            class="beans.InitDestroy.TestInitDestroy"-->
+    <!--            lazy-init="true"-->
+    <!--            init-method="init"-->
+    <!--            destroy-method="destroy"-->
+    <!--    />-->
 
     <!-- java 파일로 주입 예제 -->
 
-<!--    <bean id="t18" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
-<!--    &lt;!&ndash;-->
-<!--        생성자(constructor)를 통한 주입이므로 constructor-arg 태그를 이용.-->
-<!--    &ndash;&gt;-->
-<!--        <constructor-arg name="data1" index="0" value="1972" type="int"/>-->
-<!--        <constructor-arg name="data2" index="1" value="형사양반"/>-->
-<!--        <constructor-arg name="data3" index="2" ref="data_bean3"/>-->
-<!--    </bean>-->
+    <!--    <bean id="t18" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
+    <!--    &lt;!&ndash;-->
+    <!--        생성자(constructor)를 통한 주입이므로 constructor-arg 태그를 이용.-->
+    <!--    &ndash;&gt;-->
+    <!--        <constructor-arg name="data1" index="0" value="1972" type="int"/>-->
+    <!--        <constructor-arg name="data2" index="1" value="형사양반"/>-->
+    <!--        <constructor-arg name="data3" index="2" ref="data_bean3"/>-->
+    <!--    </bean>-->
 
-<!--    <bean id="t19" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
-<!--            -->
+    <!--    <bean id="t19" class="beans.JavaDI.TestJavaDI.TestJavaDI" lazy-init="true">-->
+    <!--            -->
     <!--
         setter 메서드를 이용하는 경우, property 태그를 사용.
     -->
-<!--        <property name="data1" value="1972"/>-->
-<!--        <property name="data2" value="정진영"/>-->
-<!--        <property name="data3" ref="data_bean3"/>-->
-<!--    </bean>-->
+    <!--        <property name="data1" value="1972"/>-->
+    <!--        <property name="data2" value="정진영"/>-->
+    <!--        <property name="data3" ref="data_bean3"/>-->
+    <!--    </bean>-->
 
-<!--    <bean id="data_bean3" class="beans.JavaDI.DataJavaDI"/>-->
+    <!--    <bean id="data_bean3" class="beans.JavaDI.DataJavaDI"/>-->
 
-<!--    <bean id="data1" class="beans.JavaDI.DataJavaDI2"/>-->
-<!--    <bean id="data2" class="beans.JavaDI.DataJavaDI2"/>-->
+    <!--    <bean id="data1" class="beans.JavaDI.DataJavaDI2"/>-->
+    <!--    <bean id="data2" class="beans.JavaDI.DataJavaDI2"/>-->
 
-<!--    <bean id="t20" class="beans.JavaDI.TestJavaDI.TestJavaDI2" lazy-init="true" autowire="byName"/>-->
-<!--    <bean id="t21" class="beans.JavaDI.TestJavaDI.TestJavaDI3" lazy-init="true" autowire="byType"/>-->
+    <!--    <bean id="t20" class="beans.JavaDI.TestJavaDI.TestJavaDI2" lazy-init="true" autowire="byName"/>-->
+    <!--    <bean id="t21" class="beans.JavaDI.TestJavaDI.TestJavaDI3" lazy-init="true" autowire="byType"/>-->
 
 
-      <!--
-        bean 클래스에 설정되어 있는 annotation 을 이용한다.
-      -->
-<!--    <context:annotation-config/>-->
-<!--    <bean id="t22" class="beans.AnnotationBean.AnnotationBean">-->
-<!--        <property name="data1" value="1972"/>-->
-<!--    </bean>-->
+    <!--
+      bean 클래스에 설정되어 있는 annotation 을 이용한다.
+    -->
+    <!--    <context:annotation-config/>-->
+    <!--    <bean id="t22" class="beans.AnnotationBean.AnnotationBean">-->
+    <!--        <property name="data1" value="1972"/>-->
+    <!--    </bean>-->
 
-<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData"/>-->
+    <!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData"/>-->
 
-<!--    <bean id="obj19" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
-<!--    <bean id="obj20" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
+    <!--    <bean id="obj19" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
+    <!--    <bean id="obj20" class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData2"/>-->
 
-<!--    <bean id="t23" class="beans.AnnotationBean.AnnotationBean2"/>-->
-<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData3"/>-->
-<!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData4"/>-->
+    <!--    <bean id="t23" class="beans.AnnotationBean.AnnotationBean2"/>-->
+    <!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData3"/>-->
+    <!--    <bean class="beans.AnnotationBean.AnnotationBeanData.AnnotationBeanData4"/>-->
 
     <!--
         Component
@@ -409,17 +412,47 @@
          bean 에 설정된 설정들을 탐색하기 위해 context:component-scan
          를 입력하고 경로를 beans 와 beans2 로 잡아준다
     -->
-<!--        <bean class="beans.Component.TestForComponent"/>-->
-<!--        <bean id="t24" class="beans.Component.TestForComponent2" />-->
-<!--        <bean id="t25" class="beans.Component.TestForComponent2" />-->
+    <!--        <bean class="beans.Component.TestForComponent"/>-->
+    <!--        <bean id="t24" class="beans.Component.TestForComponent2" />-->
+    <!--        <bean id="t25" class="beans.Component.TestForComponent2" />-->
 
-        <!--   지정된 패키지 안에 있는 bean 클래스들의 어노테이션을 분석하도록 지정.  -->
-<!--        <context:component-scan base-package="beans.Component.TestBeans"/>-->
-<!--        <context:component-scan base-package="beans.Component.TestBeans2"/>-->
+    <!--   지정된 패키지 안에 있는 bean 클래스들의 어노테이션을 분석하도록 지정.  -->
+    <!--        <context:component-scan base-package="beans.Component.TestBeans"/>-->
+    <!--        <context:component-scan base-package="beans.Component.TestBeans2"/>-->
 
-<!--        <bean id="c3" class="beans.Component.TestBeans.TestForComponent4"/>-->
-<!--        <bean id="c4" class="beans.Component.TestBeans.TestForComponent4"/>-->
+    <!--        <bean id="c3" class="beans.Component.TestBeans.TestForComponent4"/>-->
+    <!--        <bean id="c4" class="beans.Component.TestBeans.TestForComponent4"/>-->
 
+    <!--  -->
+    <bean id="t33" class="beans.SpringAOP.AOPBeans.TestBeanAOP"/>
+    <bean id="adv1" class="beans.SpringAOP.Advisor.AdvisorClass"/>
 
+    <aop:config>
+        <!--
+            * 관심사 설정.
+            ref 에 AdvisorClass 를 등록한 뒤,
+            aop:aspect 태그 내에 aop:pointcut 태그 이용하여 작성.
+        -->
+        <aop:aspect ref="adv1">
+            <!--
+                expression="execution(* TestBeanAOP())"
+                이 부분이 관심사를 설정한 것
+            -->
+            <aop:pointcut id="p1" expression="execution(* TestBeanAOP())"/>
+            <!-- pointcut 에서 설정한 관심사가 호출되면 aspect 가 가지고 있는 before 를 호출함. -->
+            <aop:before method="before" pointcut-ref="p1"/>
+            <aop:after method="after" pointcut-ref="p1"/>
+            <aop:around method="around" pointcut-ref="p1"/>
+
+            <!--  오류를 발생시키면 AdvisorClass 의 afterReturn 은 호출되지 않는다. -->
+            <aop:after-returning method="afterReturn" pointcut-ref="p1"/>
+
+            <!--
+                오류를 발생시키면 AdvisorClass 의 afterThrowing 이 호출된다.
+                에러에 대한 정보는 throwing 에 담기며, 출력도 가능하다.
+            -->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="p1" throwing="th"/>
+        </aop:aspect>
+    </aop:config>
 
 </beans>
