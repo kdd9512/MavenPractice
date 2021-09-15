@@ -427,32 +427,60 @@
     <bean id="t33" class="beans.SpringAOP.AOPBeans.TestBeanAOP"/>
     <bean id="adv1" class="beans.SpringAOP.Advisor.AdvisorClass"/>
 
-    <aop:config>
-        <!--
-            * 관심사 설정.
-            ref 에 AdvisorClass 를 등록한 뒤,
-            aop:aspect 태그 내에 aop:pointcut 태그 이용하여 작성.
-        -->
-        <aop:aspect ref="adv1">
-            <!--
-                expression="execution(* TestBeanAOP())"
-                이 부분이 관심사를 설정한 것
-            -->
-            <aop:pointcut id="p1" expression="execution(* TestBeanAOP())"/>
-            <!-- pointcut 에서 설정한 관심사가 호출되면 aspect 가 가지고 있는 before 를 호출함. -->
-            <aop:before method="before" pointcut-ref="p1"/>
-            <aop:after method="after" pointcut-ref="p1"/>
-            <aop:around method="around" pointcut-ref="p1"/>
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;-->
+<!--            * 관심사 설정.-->
+<!--            ref 에 AdvisorClass 를 등록한 뒤,-->
+<!--            aop:aspect 태그 내에 aop:pointcut 태그 이용하여 작성.-->
+<!--        &ndash;&gt;-->
+<!--        <aop:aspect ref="adv1">-->
+<!--            &lt;!&ndash;-->
+<!--                expression="execution(* TestBeanAOP())"-->
+<!--                이 부분이 관심사를 설정한 것-->
+<!--            &ndash;&gt;-->
+<!--            <aop:pointcut id="p1" expression="execution(* TestBeanAOP())"/>-->
+<!--            &lt;!&ndash; pointcut 에서 설정한 관심사가 호출되면 aspect 가 가지고 있는 before 를 호출함. &ndash;&gt;-->
+<!--            <aop:before method="before" pointcut-ref="p1"/>-->
+<!--            <aop:after method="after" pointcut-ref="p1"/>-->
+<!--            <aop:around method="around" pointcut-ref="p1"/>-->
 
-            <!--  오류를 발생시키면 AdvisorClass 의 afterReturn 은 호출되지 않는다. -->
-            <aop:after-returning method="afterReturn" pointcut-ref="p1"/>
+<!--            &lt;!&ndash;  오류를 발생시키면 AdvisorClass 의 afterReturn 은 호출되지 않는다. &ndash;&gt;-->
+<!--            <aop:after-returning method="afterReturn" pointcut-ref="p1"/>-->
 
-            <!--
-                오류를 발생시키면 AdvisorClass 의 afterThrowing 이 호출된다.
-                에러에 대한 정보는 throwing 에 담기며, 출력도 가능하다.
-            -->
-            <aop:after-throwing method="afterThrowing" pointcut-ref="p1" throwing="th"/>
-        </aop:aspect>
-    </aop:config>
+<!--            &lt;!&ndash;-->
+<!--                오류를 발생시키면 AdvisorClass 의 afterThrowing 이 호출된다.-->
+<!--                에러에 대한 정보는 throwing 에 담기며, 출력도 가능하다.-->
+<!--            &ndash;&gt;-->
+<!--            <aop:after-throwing method="afterThrowing" pointcut-ref="p1" throwing="th"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+        <bean id="t34" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe"/>
+
+        <!--  advisor 역할을 할 Bean 등록  -->
+        <bean id="adv2" class="beans.ExecutionDirective.ExecutionAdvisor.AdvisorClassExe"/>
+
+        <aop:config>
+            <aop:aspect ref="adv2">
+                <!-- execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc() 라는 메서드
+                -->
+<!--                <aop:pointcut-->
+<!--                        id="p2"-->
+<!--                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc())"/>-->
+
+                <!-- execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc(int) 라는 정수형 매개변수가 1개 있는 메서드
+                -->
+                <aop:pointcut
+                        id="p2"
+                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(int))"/>
+                <aop:before method="beforeEx" pointcut-ref="p2"/>
+            </aop:aspect>
+        </aop:config>
 
 </beans>
