@@ -462,6 +462,10 @@
         <!--  advisor 역할을 할 Bean 등록  -->
         <bean id="adv2" class="beans.ExecutionDirective.ExecutionAdvisor.AdvisorClassExe"/>
 
+
+
+    <!-- AOP 명시자 연습 -->
+
         <aop:config>
             <aop:aspect ref="adv2">
                 <!-- execution( return 타입 해당 메서드가 담긴 Bean 경로 )
