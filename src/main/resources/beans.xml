@@ -456,6 +456,8 @@
 <!--    </aop:config>-->
 
         <bean id="t34" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe"/>
+        <bean id="t35" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe2"/>
+        <bean id="t36" class="beans.ExecutionDirective.ExecutionBeans2.TestBeanExe"/>
 
         <!--  advisor 역할을 할 Bean 등록  -->
         <bean id="adv2" class="beans.ExecutionDirective.ExecutionAdvisor.AdvisorClassExe"/>
@@ -535,8 +537,28 @@
                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
                     해당 클래스 내부에 존재하는 모든 메서드를 호출한다.
                -->
-                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.*(..))"/>
+<!--                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.*(..))"/>-->
 
+                <!--
+                    ** 9. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                    반환타입은 void
+                    beans.ExecutionDirective.ExecutionBeans 패키지
+                    해당 패키지 내부에 존재하는 클래스들이 갖는 모든 메서드를 호출한다.
+               -->
+<!--                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.*.*(..))"/>-->
+
+                <!-- 번외.
+                     반환타입은 void. 모든 패키지를 지정하되, 클래스들이 갖는 메서드 중 이름이 BeanExc 인 메서드만 호출. -->
+<!--                    <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.*.BeanExc(..))"/>-->
+
+                <!-- 반환타입은 void. ExecutionDirective 내의 모든 패키지를 지정, 클래스들이 갖는 메서드를 모두 호출. -->
+<!--                     <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.*.*.*(..))"/>-->
+
+                <!-- 반환타입은 void. 프로젝트 내부의 모든 패키지를 지정, 클래스들이 갖는 메서드를 모두 호출. -->
+<!--                     <aop:pointcut id="p2" expression="execution(void *.*(..))"/>-->
+
+                <!-- ** 반환타입 구분 안함(모든 반환타입). 프로젝트 내부의 모든 패키지를 지정, 클래스들이 갖는 메서드를 모두 호출. -->
+                     <aop:pointcut id="p2" expression="execution(* *.*(..))"/>
 
                 <aop:before method="beforeEx" pointcut-ref="p2"/>
             </aop:aspect>

@@ -25,4 +25,9 @@ public class TestBeanExe {
     public void BeanExc2 (){
         System.out.println("BeanExc2 메서드 호출됨");
     }
+
+    public int BeanExc3 (){
+        System.out.println("int ExecutionBeans.BeanExc3 메서드 호출됨");
+        return 1972;
+    }
 }

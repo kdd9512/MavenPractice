@@ -1,6 +1,8 @@
 package main;
 
-import beans.ExecutionDirective.ExecutionBeans.*;
+import beans.ExecutionDirective.ExecutionBeans.TestBeanExe;
+import beans.ExecutionDirective.ExecutionBeans.TestBeanExe2;
+import beans.ExecutionDirective.ExecutionBeans2.*;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MainExecutionDirective {
@@ -10,6 +12,9 @@ public class MainExecutionDirective {
 
         // Bean 호출
         TestBeanExe t34 = ctx.getBean("t34", TestBeanExe.class);
+        TestBeanExe2 t35 = ctx.getBean("t35", TestBeanExe2.class);
+        beans.ExecutionDirective.ExecutionBeans2.TestBeanExe t36 =
+                ctx.getBean("t36", beans.ExecutionDirective.ExecutionBeans2.TestBeanExe.class);
         // Class 내부 메서드 호출
         t34.BeanExc();
 
@@ -37,6 +42,19 @@ public class MainExecutionDirective {
         System.out.println("-------------------------------------------");
         // TestBeanExe.BeanExc2 호출
         t34.BeanExc2();
+
+        System.out.println("-------------------------------------------");
+        // TestBeanExe2.BeanExc 호출
+        t35.BeanExc();
+
+        System.out.println("-------------------------------------------");
+        // 다른 패키지의 같은 이름을 갖는 클래스 내부의 메서드 호출.
+        t36.BeanExc();
+
+        System.out.println("-------------------------------------------");
+        // 반환값이 int 인 메서드 BeanExc3 호출.
+        int a1 = t34.BeanExc3();
+        System.out.printf("t34.BeanExc3() return : %s\n",a1);
 
         ctx.close();
     }
