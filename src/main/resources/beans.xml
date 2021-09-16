@@ -471,14 +471,73 @@
 <!--                        id="p2"-->
 <!--                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc())"/>-->
 
-                <!-- execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                <!-- 1. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
                      반환타입은 void
                      beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
                      해당 클래스 내부의 BeanExc(int) 라는 정수형 매개변수가 1개 있는 메서드
                 -->
-                <aop:pointcut
-                        id="p2"
-                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(int))"/>
+<!--                <aop:pointcut-->
+<!--                        id="p2"-->
+<!--                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(int))"/>-->
+
+                <!-- 2. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc(String) 라는 문자열 매개변수가 1개 있는 메서드
+               -->
+<!--                <aop:pointcut-->
+<!--                        id="p2"-->
+<!--                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(java.lang.String))"/>-->
+
+                <!-- 3. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc 라는 메서드를 매개변수의 종류에 상관 없이 매개변수가 한 개 있는 메서드를 모두 가지고 온다.
+                 -->
+<!--                <aop:pointcut
+                       id="p2"
+                       expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(*))"/>-->
+
+                <!-- 4. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc 라는 메서드 중, int 타입 매개변수를 2개 갖는 메서드를 호출함.
+                -->
+<!--                <aop:pointcut-->
+<!--                        id="p2"-->
+<!--                        expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(int, int))"/>-->
+<!--                -->
+
+                <!-- 5. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc 라는 메서드 중, int 타입 매개변수를 1개, 문자열 타입 매개변수를 1개 갖는 메서드를 호출함.
+                -->
+<!--                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(int, java.lang.String))"/>-->
+
+                <!-- 6. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     해당 클래스 내부의 BeanExc 라는 메서드 중, 타입에 관계없이 2개의 매개변수를 갖는 메서드를 모두 호출출.
+               -->
+<!--                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(*,*))"/>-->
+
+                <!-- 7. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                     반환타입은 void
+                     beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                     타입에 관계 없이 해당 클래스 내부의 BeanExc 라는 메서드명을 갖는 모든 메서드를 호출한다.
+                -->
+<!--                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.BeanExc(..))"/>-->
+
+                <!--
+                    ** 8. execution( return 타입 해당 메서드가 담긴 Bean 경로 )
+                    반환타입은 void
+                    beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
+                    해당 클래스 내부에 존재하는 모든 메서드를 호출한다.
+               -->
+                <aop:pointcut id="p2" expression="execution(void beans.ExecutionDirective.ExecutionBeans.TestBeanExe.*(..))"/>
+
+
                 <aop:before method="beforeEx" pointcut-ref="p2"/>
             </aop:aspect>
         </aop:config>
