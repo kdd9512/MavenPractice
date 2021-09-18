@@ -424,8 +424,8 @@
     <!--        <bean id="c4" class="beans.Component.TestBeans.TestForComponent4"/>-->
 
     <!--  -->
-    <bean id="t33" class="beans.SpringAOP.AOPBeans.TestBeanAOP"/>
-    <bean id="adv1" class="beans.SpringAOP.Advisor.AdvisorClass"/>
+<!--    <bean id="t33" class="beans.SpringAOP.AOPBeans.TestBeanAOP"/>-->
+<!--    <bean id="adv1" class="beans.SpringAOP.Advisor.AdvisorClass"/>-->
 
 <!--    <aop:config>-->
 <!--        &lt;!&ndash;-->
@@ -455,19 +455,19 @@
 <!--        </aop:aspect>-->
 <!--    </aop:config>-->
 
-        <bean id="t34" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe"/>
-        <bean id="t35" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe2"/>
-        <bean id="t36" class="beans.ExecutionDirective.ExecutionBeans2.TestBeanExe"/>
+<!--        <bean id="t34" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe"/>-->
+<!--        <bean id="t35" class="beans.ExecutionDirective.ExecutionBeans.TestBeanExe2"/>-->
+<!--        <bean id="t36" class="beans.ExecutionDirective.ExecutionBeans2.TestBeanExe"/>-->
 
         <!--  advisor 역할을 할 Bean 등록  -->
-        <bean id="adv2" class="beans.ExecutionDirective.ExecutionAdvisor.AdvisorClassExe"/>
+<!--        <bean id="adv2" class="beans.ExecutionDirective.ExecutionAdvisor.AdvisorClassExe"/>-->
 
 
 
     <!-- AOP 명시자 연습 -->
 
-        <aop:config>
-            <aop:aspect ref="adv2">
+<!--        <aop:config>-->
+<!--            <aop:aspect ref="adv2">-->
                 <!-- execution( return 타입 해당 메서드가 담긴 Bean 경로 )
                      반환타입은 void
                      beans.ExecutionDirective.ExecutionBeans.TestBeanExe 클래스.
@@ -562,10 +562,16 @@
 <!--                     <aop:pointcut id="p2" expression="execution(void *.*(..))"/>-->
 
                 <!-- ** 반환타입 구분 안함(모든 반환타입). 프로젝트 내부의 모든 패키지를 지정, 클래스들이 갖는 메서드를 모두 호출. -->
-                     <aop:pointcut id="p2" expression="execution(* *.*(..))"/>
+<!--                     <aop:pointcut id="p2" expression="execution(* *.*(..))"/>-->
 
-                <aop:before method="beforeEx" pointcut-ref="p2"/>
-            </aop:aspect>
-        </aop:config>
+<!--                <aop:before method="beforeEx" pointcut-ref="p2"/>-->
+<!--            </aop:aspect>-->
+<!--        </aop:config>-->
+
+            <context:component-scan base-package="beans.AOPJava.TestBeans"/>
+            <context:component-scan base-package="beans.AOPJava.Advisor"/>
+
+    <!-- advisor 클래스에 설정되어 있는 Annotation 을 분석, AOP 세팅을 수행 -->
+    <aop:aspectj-autoproxy/>
 
 </beans>
