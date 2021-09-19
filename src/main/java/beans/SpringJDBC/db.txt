@@ -1,0 +1,4 @@
+create database jdbcTest (
+intData number not null,
+strData varchar(50) not null
+);
