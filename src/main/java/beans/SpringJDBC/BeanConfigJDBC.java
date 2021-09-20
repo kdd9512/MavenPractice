@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
-@ComponentScan(basePackages = {"beans.SpringJDBC.JDBCBeans","beans.SpringJDBC.SpringDAO"})
+@ComponentScan(basePackages = {"beans.SpringJDBC.JDBCBeans", "beans.SpringJDBC.DataBase"})
 public class BeanConfigJDBC {
 
     // DataSource
