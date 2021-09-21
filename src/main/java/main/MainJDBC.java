@@ -44,8 +44,8 @@ public class MainJDBC {
 //        dao.updateData(bean4);
 
         // 값 지우기.
-        dao.deleteData(1972);
-
-        ctx.close();
+//        dao.deleteData(1972);
+//
+//        ctx.close();
     }
 }
